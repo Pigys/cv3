@@ -50,6 +50,36 @@ int main(void)
 {
   int i = 0;
 
+  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+
+    GPIO_InitTypeDef gpioInitStruc;
+
+    gpioInitStruc.GPIO_Mode = GPIO_Mode_OUT;
+    gpioInitStruc.GPIO_OType = GPIO_OType_PP;
+    gpioInitStruc.GPIO_Pin = GPIO_Pin_5;
+    gpioInitStruc.GPIO_Speed = GPIO_Speed_40MHz;
+
+    GPIO_Init(GPIOA, &gpioInitStruc);
+    //uloha1
+
+   // GPIO_Write(GPIOA, GPIO_Pin_5);
+
+
+    GPIO_SetBits(GPIOA, GPIO_Pin_5); //BSRRL
+    GPIO_ResetBits(GPIOA, GPIO_Pin_5); // BSRRH
+
+    GPIO_ToggleBits(GPIOA, GPIO_Pin_5);//
+    GPIO_ToggleBits(GPIOA, GPIO_Pin_5);//
+
+    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+
+    gpioInitStruc.GPIO_Mode = GPIO_Mode_IN;
+    gpioInitStruc.GPIO_Pin = GPIO_Pin_13;
+    gpioInitStruc.GPIO_PuPd = GPIO_PuPd_UP;
+    gpioInitStruc.GPIO_Speed = GPIO_Speed_40MHz;
+
+    GPIO_Init(GPIOC, &gpioInitStruc);
+
   /**
   *  IMPORTANT NOTE!
   *  See the <system_*.c> file and how/if the SystemInit() function updates 
