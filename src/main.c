@@ -73,7 +73,7 @@ int main(void)
 
     // end_uloha1
 
-
+    //uloha2
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 
     gpioInitStruc.GPIO_Mode = GPIO_Mode_IN;
@@ -82,6 +82,11 @@ int main(void)
     gpioInitStruc.GPIO_Speed = GPIO_Speed_40MHz;
 
     GPIO_Init(GPIOC, &gpioInitStruc);
+
+    uint8_t butonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+
+
+
 
   /**
   *  IMPORTANT NOTE!
@@ -107,6 +112,7 @@ int main(void)
   while (1)
   {
 	i++;
+	butonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
   }
   return 0;
 }
