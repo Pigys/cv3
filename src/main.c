@@ -49,7 +49,7 @@ SOFTWARE.
 int main(void)
 {
   int i = 0;
-
+  int previous = 0;
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
     GPIO_InitTypeDef gpioInitStruc;
@@ -86,7 +86,30 @@ int main(void)
     uint8_t butonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 
 
+    //uloha3a
+    /*
+int a,b,c=0;
+        for( a=0;a<20;a++)
+          	  {
+        	  	  for (b = 0; b<120000;b++) {
+        	  		GPIO_Write(GPIOA,GPIO_Pin_5);
+        	  	  }
+        	  	 for (c = 0; c<120000;c++) {
+        	  		GPIO_Write(GPIOA,0b0 << 5);
+        	  	 }
 
+          	  }
+          	  //end_uloha3a
+        */
+   //uloha3b
+   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
+
+   gpioInitStruc.GPIO_Mode = GPIO_Mode_IN;
+   gpioInitStruc.GPIO_Pin = GPIO_Pin_13;
+   gpioInitStruc.GPIO_PuPd = GPIO_PuPd_UP;
+   gpioInitStruc.GPIO_Speed = GPIO_Speed_40MHz;
+
+   GPIO_Init(GPIOC, &gpioInitStruc);
 
   /**
   *  IMPORTANT NOTE!
@@ -112,7 +135,22 @@ int main(void)
   while (1)
   {
 	i++;
+	previous = butonState;
 	butonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+/*//uloha3b
+	if(butonState == 0){
+		GPIO_SetBits(GPIOA, GPIO_Pin_5);
+		  }
+		  else if(butonState == 1) {
+			  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+		  }
+	//end_uloha3b
+*/
+//uloha3c
+	 if((previous == 1)&&(butonState == 0)){
+		 GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
+		  	  }
+
   }
   return 0;
 }
