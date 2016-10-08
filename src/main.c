@@ -62,14 +62,17 @@ int main(void)
     GPIO_Init(GPIOA, &gpioInitStruc);
     //uloha1
 
-   // GPIO_Write(GPIOA, GPIO_Pin_5);
+    GPIO_Write(GPIOA,GPIO_Pin_5); //Zapnutie LED pomocou ODR
+    GPIO_Write(GPIOA,0b0 << 5);   //Vypnutie LED pomocou ODR
 
+    GPIO_SetBits(GPIOA, GPIO_Pin_5); //Zapnutie LED pomocou BSRR
+    GPIO_ResetBits(GPIOA, GPIO_Pin_5); // Vypnutie LED pomocou BSRR
 
-    GPIO_SetBits(GPIOA, GPIO_Pin_5); //BSRRL
-    GPIO_ResetBits(GPIOA, GPIO_Pin_5); // BSRRH
+    GPIO_ToggleBits(GPIOA, GPIO_Pin_5);//Prepínanie stavu LED pomocou ODR
+    GPIO_ToggleBits(GPIOA, GPIO_Pin_5);//Prepínanie stavu LED pomocou ODR
 
-    GPIO_ToggleBits(GPIOA, GPIO_Pin_5);//
-    GPIO_ToggleBits(GPIOA, GPIO_Pin_5);//
+    // end_uloha1
+
 
     RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 
