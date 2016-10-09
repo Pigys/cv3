@@ -601,7 +601,7 @@ int main(void)
 
           	  }
           	  //end_uloha3a
-        */
+*/
    //uloha3b
    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
  800042a:	2101      	movs	r1, #1
@@ -646,8 +646,8 @@ int main(void)
  8000464:	74fb      	strb	r3, [r7, #19]
 			  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 		  }
-	//end_uloha3b
-*/
+	*///end_uloha3b
+
 //uloha3c
 	 if((previous == 1)&&(butonState == 0)){
  8000466:	68fb      	ldr	r3, [r7, #12]

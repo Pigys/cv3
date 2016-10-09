@@ -87,8 +87,7 @@ int main(void)
 
 
     //uloha3a
-    /*
-int a,b,c=0;
+  /*  int a,b,c=0;
         for( a=0;a<20;a++)
           	  {
         	  	  for (b = 0; b<120000;b++) {
@@ -100,7 +99,7 @@ int a,b,c=0;
 
           	  }
           	  //end_uloha3a
-        */
+*/
    //uloha3b
    RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
 
@@ -137,15 +136,15 @@ int a,b,c=0;
 	i++;
 	previous = butonState;
 	butonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
-/*//uloha3b
-	if(butonState == 0){
+//uloha3b
+	/*if(butonState == 0){
 		GPIO_SetBits(GPIOA, GPIO_Pin_5);
 		  }
 		  else if(butonState == 1) {
 			  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 		  }
-	//end_uloha3b
-*/
+	*///end_uloha3b
+
 //uloha3c
 	 if((previous == 1)&&(butonState == 0)){
 		 GPIO_ToggleBits(GPIOA, GPIO_Pin_5);
